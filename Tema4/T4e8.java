@@ -13,20 +13,21 @@ public class T4e8 {
         int[][] variables = new int[10][10];
 
         // Llena el array
-        for (int[] row: variables)
+        for (int[] row: variables) {
             Arrays.fill(row, 0);
+        }
+            
         for (int i = 0; i < 10; i++) {
             System.out.println(Arrays.toString(variables[i]));
         }
         
-        String var1 = JOptionPane.showInputDialog("Introduce el nº de fila:");
-        String var2 = JOptionPane.showInputDialog("Introduce el valor para esa fila:");
-        String var3 = JOptionPane.showInputDialog("Introduce el nº de columna:");
-        String var4 = JOptionPane.showInputDialog("Introduce el valor para esa columna:");
+        //        String var1 = JOptionPane.showInputDialog("Introduce el nº de fila:");
+        //        String var2 = JOptionPane.showInputDialog("Introduce el valor para esa fila:");
+        //        String var3 = JOptionPane.showInputDialog("Introduce el nº de columna:");
+        //        String var4 = JOptionPane.showInputDialog("Introduce el valor para esa columna:");
         
         
-
-     
+        
     }
     
 }
