@@ -1,0 +1,6 @@
+llenar combobox {
+	for (int x = 0, x < 18, x++) {
+	comboboxName.insertItemAt(param1, pos);
+	año = año - 1;
+	}
+}
