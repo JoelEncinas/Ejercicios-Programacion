@@ -1,15 +1,17 @@
 /* [Xx ¡Bienvenidos al tren del mame! xX] */
 package t8p4e1;
 
-import Clases.Personal;
+import Clases.*;
 import Vistas.*;
 import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
  * @author Jowii
  */
 public class T8p4e1 {
+    /* ------------------------------ */
     /* BASE DE DATOS */
     //Ventanas
     private static Login vLogin;
@@ -17,16 +19,22 @@ public class T8p4e1 {
     
     //Clases
     private static Personal ep1;
+    private static Empleado ee1;
+    private static Departamento departamento;
+    private static ArrayList<Departamento> listaDepartamentos;
 
     //Variables
     private static int contador = 0;
+    
+    /* ------------------------------ */
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //Crear empleado personal
+        //Inicializar base de datos
         crearDatosPersonal();
+        crearDatosDepartamento();
         
         //Intro login
         mostrarLogin();
@@ -54,13 +62,9 @@ public class T8p4e1 {
             mostrarMain();            
         }        
         else {
+            vLogin.limpiarCampos();
             contador++;
         }
-    }
-    
-    //Metodos Personal
-    public static void crearDatosPersonal() {
-        ep1 = new Personal("juan", "123");
     }
     
     //Metodos Ventana main
@@ -71,6 +75,38 @@ public class T8p4e1 {
     
     public static void cerrarMain(){
         vMain.dispose();
+    }
+    
+    //Metodos Personal
+    public static void crearDatosPersonal() {
+        ep1 = new Personal("root", "123");
+    }
+    
+    //Metodos Departamento
+    public static void crearDatosDepartamento(){
+        listaDepartamentos = new ArrayList<>();
+        departamento = new Departamento("Logistica");        
+        listaDepartamentos.add(departamento);
+        departamento = new Departamento("Personal");
+        listaDepartamentos.add(departamento);
+        departamento = new Departamento("Informatica");
+        listaDepartamentos.add(departamento);
+        departamento = new Departamento("Contabilidad");
+        listaDepartamentos.add(departamento);
+        
+        //Debug purposes
+        for (int i = 0; i < listaDepartamentos.size(); i++) {
+            System.out.println(listaDepartamentos.get(i).getNombreDepartamento());
+        }
+        
+    }
+    
+    //Metodos Contrato
+    
+    
+    //Metodos Empleado
+    public static void crearDatosEmpleado(){
+        
     }
     
     //Salir programa

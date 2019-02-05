@@ -16,6 +16,11 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
     }
+    
+    public void limpiarCampos(){
+        tfUser.setText("");
+        tfPass.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
