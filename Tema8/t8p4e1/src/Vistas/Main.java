@@ -37,8 +37,9 @@ public class Main extends javax.swing.JFrame {
         bDepartamento = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        bSalir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
-        bPersonas = new javax.swing.JMenu();
+        mPersonas = new javax.swing.JMenu();
         mAlta = new javax.swing.JMenuItem();
         mBaja = new javax.swing.JMenuItem();
         mModificacion = new javax.swing.JMenuItem();
@@ -46,17 +47,32 @@ public class Main extends javax.swing.JFrame {
         mNumEmpleado = new javax.swing.JMenuItem();
         mContrato = new javax.swing.JMenuItem();
         mDepartamento = new javax.swing.JMenuItem();
-        bSalir = new javax.swing.JMenu();
+        mSalir = new javax.swing.JMenu();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         bAlta.setText("Alta");
+        bAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAltaActionPerformed(evt);
+            }
+        });
 
         bBaja.setText("Baja");
+        bBaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBajaActionPerformed(evt);
+            }
+        });
 
         bModificacion.setText("Modificacion");
+        bModificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bModificacionActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Empleados");
@@ -75,7 +91,14 @@ public class Main extends javax.swing.JFrame {
 
         jLabel4.setText("<html>Bienvenido a MameCorp Inc. Utiliza los botones para modificar los<br> datos de los empleados o listar los empleados por el criterio de <br> busqueda especificado.</html>");
 
-        bPersonas.setText("Personas");
+        bSalir.setText("Salir");
+        bSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bSalirActionPerformed(evt);
+            }
+        });
+
+        mPersonas.setText("Personas");
 
         mAlta.setText("Alta");
         mAlta.addActionListener(new java.awt.event.ActionListener() {
@@ -83,13 +106,13 @@ public class Main extends javax.swing.JFrame {
                 mAltaActionPerformed(evt);
             }
         });
-        bPersonas.add(mAlta);
+        mPersonas.add(mAlta);
 
         mBaja.setText("Baja");
-        bPersonas.add(mBaja);
+        mPersonas.add(mBaja);
 
         mModificacion.setText("Modificacion");
-        bPersonas.add(mModificacion);
+        mPersonas.add(mModificacion);
 
         bListado.setText("Listado");
 
@@ -102,26 +125,26 @@ public class Main extends javax.swing.JFrame {
         mDepartamento.setText("Por Departamento");
         bListado.add(mDepartamento);
 
-        bPersonas.add(bListado);
+        mPersonas.add(bListado);
 
-        jMenuBar1.add(bPersonas);
+        jMenuBar1.add(mPersonas);
 
-        bSalir.setText("Salir");
-        bSalir.addMenuListener(new javax.swing.event.MenuListener() {
+        mSalir.setText("Salir");
+        mSalir.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuCanceled(javax.swing.event.MenuEvent evt) {
             }
             public void menuDeselected(javax.swing.event.MenuEvent evt) {
             }
             public void menuSelected(javax.swing.event.MenuEvent evt) {
-                bSalirMenuSelected(evt);
+                mSalirMenuSelected(evt);
             }
         });
-        bSalir.addActionListener(new java.awt.event.ActionListener() {
+        mSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bSalirActionPerformed(evt);
+                mSalirActionPerformed(evt);
             }
         });
-        jMenuBar1.add(bSalir);
+        jMenuBar1.add(mSalir);
 
         setJMenuBar(jMenuBar1);
 
@@ -129,62 +152,69 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(323, 516, Short.MAX_VALUE)
+                .addComponent(bSalir)
+                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(137, 137, 137)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(bAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(bModificacion)
-                                    .addComponent(jLabel1))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(39, 39, 39)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(bDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(bContrato)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(bNumEmpleado))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(131, 131, 131)
-                                        .addComponent(jLabel2))))
+                                .addGap(14, 14, 14)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(bBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(bAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bModificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(101, 101, 101)
-                                .addComponent(jLabel3)))
-                        .addGap(0, 14, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                                .addGap(86, 86, 86)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(56, 56, 56)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(bContrato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bNumEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bDepartamento)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(80, 80, 80)
+                                .addComponent(jLabel3)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(28, 28, 28)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bNumEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bBaja, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bModificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(bDepartamento, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bNumEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addComponent(bSalir)
+                .addGap(25, 25, 25))
         );
 
         pack();
@@ -192,16 +222,41 @@ public class Main extends javax.swing.JFrame {
 
     private void mAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mAltaActionPerformed
         // TODO add your handling code here:
+        T8p4e1.mostrarGestion();
     }//GEN-LAST:event_mAltaActionPerformed
+
+    private void mSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSalirActionPerformed
+        // TODO add your handling code here:
+        T8p4e1.cerrarPrograma();
+    }//GEN-LAST:event_mSalirActionPerformed
+
+    private void mSalirMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_mSalirMenuSelected
+        // TODO add your handling code here:
+        T8p4e1.cerrarPrograma();
+    }//GEN-LAST:event_mSalirMenuSelected
+
+    private void bAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAltaActionPerformed
+        // TODO add your handling code here:
+        T8p4e1.cerrarMain();
+        T8p4e1.mostrarGestion();
+    }//GEN-LAST:event_bAltaActionPerformed
+
+    private void bBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBajaActionPerformed
+        // TODO add your handling code here:
+        T8p4e1.cerrarMain();
+        T8p4e1.mostrarGestion();
+    }//GEN-LAST:event_bBajaActionPerformed
+
+    private void bModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificacionActionPerformed
+        // TODO add your handling code here:
+        T8p4e1.cerrarMain();
+        T8p4e1.mostrarGestion();
+    }//GEN-LAST:event_bModificacionActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bSalirActionPerformed
-
-    private void bSalirMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_bSalirMenuSelected
-        // TODO add your handling code here:
         T8p4e1.cerrarPrograma();
-    }//GEN-LAST:event_bSalirMenuSelected
+    }//GEN-LAST:event_bSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,8 +301,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenu bListado;
     private javax.swing.JButton bModificacion;
     private javax.swing.JButton bNumEmpleado;
-    private javax.swing.JMenu bPersonas;
-    private javax.swing.JMenu bSalir;
+    private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -260,5 +314,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JMenuItem mDepartamento;
     private javax.swing.JMenuItem mModificacion;
     private javax.swing.JMenuItem mNumEmpleado;
+    private javax.swing.JMenu mPersonas;
+    private javax.swing.JMenu mSalir;
     // End of variables declaration//GEN-END:variables
 }

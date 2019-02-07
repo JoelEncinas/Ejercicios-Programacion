@@ -16,6 +16,7 @@ public class T8p4e1 {
     //Ventanas
     private static Login vLogin;
     private static Main vMain;
+    private static Gestion vGestion;
     
     //Clases
     private static Personal ep1;
@@ -77,9 +78,19 @@ public class T8p4e1 {
         vMain.dispose();
     }
     
+    //Metodos Ventana Gestion
+    public static void mostrarGestion(){
+        vGestion = new Gestion();
+        vGestion.setVisible(true);
+    }
+    
+    public static void cerrarGestion(){
+        vGestion.dispose();
+    }
+    
     //Metodos Personal
     public static void crearDatosPersonal() {
-        ep1 = new Personal("root", "123");
+        ep1 = new Personal("a", "a");
     }
     
     //Metodos Departamento
