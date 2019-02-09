@@ -1,6 +1,9 @@
 /* [Xx ¡Bienvenidos al tren del mame! xX] */
 package Vistas;
 
+import Clases.Departamento;
+import Clases.Contrato;
+import java.util.ArrayList;
 import javax.swing.ButtonGroup;
 import t8p4e1.T8p4e1;
 
@@ -11,6 +14,8 @@ import t8p4e1.T8p4e1;
 public class Gestion extends javax.swing.JFrame {
 
     private int nEmpleado;
+    private ArrayList<Departamento> listaDepartamentos;
+    private ArrayList<Contrato> listaContratos;
     
     /**
      * Creates new form Gestion
@@ -18,18 +23,52 @@ public class Gestion extends javax.swing.JFrame {
     public Gestion() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        //Button Groups
         ButtonGroup bgEstadoCivil;
-        bgEstadoCivil = new ButtonGroup();
         ButtonGroup bgSexo;
+        bgEstadoCivil = new ButtonGroup();
         bgSexo = new ButtonGroup();
         bgEstadoCivil.add(rbHombre);
         bgEstadoCivil.add(rbMujer);
         bgSexo.add(rbSoltero);
         bgSexo.add(rbCasado);
+        
+        //Añadir departamentos y contratos
+        llenarComboboxDepartamentos(listaDepartamentos);
+        llenarComboboxContratos(listaContratos);
     }
     
-    public void generarNumeroEmpleado(){
-        nEmpleado = (int) Math.floor(Math.random() * 15);
+    //Generar nº Empleado
+    public int nAleatorioEnRango(int min, int max) {
+        int rango = (max - min) + 1;     
+        return (int)(Math.random() * rango) + min;
+    }
+    
+    public String generarNumEmpleado(){
+        nEmpleado = nAleatorioEnRango(1, 99);
+        String nEmpleadoString = Integer.toString(nEmpleado);
+        return nEmpleadoString;
+    }
+    
+    //Llenar combobox Contratos
+    public final void llenarComboboxContratos(ArrayList<Contrato> listaContratos){
+        listaContratos = T8p4e1.getListaContratos();
+
+        //for que llene la combobox con los valores del ArrayList
+        for (int i = 0; i < listaContratos.size(); i++) {
+            cbContratos.addItem(listaContratos.get(i).getTipo());
+        }
+    }
+    
+    //Llenar combobox Departamentos
+    public final void llenarComboboxDepartamentos(ArrayList<Departamento> listaDepartamentos){
+        listaDepartamentos = T8p4e1.getListaDepartamentos();
+
+        //for que llene la combobox con los valores del ArrayList
+        for (int i = 0; i < listaDepartamentos.size(); i++) {
+            cbDepartamentos.addItem(listaDepartamentos.get(i).getNombreDepartamento());
+        }
     }
 
     /**
@@ -63,8 +102,8 @@ public class Gestion extends javax.swing.JFrame {
         rbCasado = new javax.swing.JRadioButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbContratos = new javax.swing.JComboBox<>();
+        cbDepartamentos = new javax.swing.JComboBox<>();
         bCancelar = new javax.swing.JButton();
         bAceptar = new javax.swing.JButton();
 
@@ -119,10 +158,6 @@ public class Gestion extends javax.swing.JFrame {
 
         jLabel11.setText("Departamento");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         bCancelar.setText("Cancelar");
         bCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,15 +188,15 @@ public class Gestion extends javax.swing.JFrame {
                                             .addComponent(jLabel11)
                                             .addComponent(jLabel10)
                                             .addComponent(jLabel6))
-                                        .addGap(103, 103, 103))
+                                        .addGap(74, 74, 74))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel7)
-                                        .addGap(111, 111, 111)))
+                                        .addGap(82, 82, 82)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(tfFecha, javax.swing.GroupLayout.DEFAULT_SIZE, 68, Short.MAX_VALUE)
-                                    .addComponent(tfNEmpleado)))
+                                    .addComponent(cbContratos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfNEmpleado)
+                                    .addComponent(tfFecha, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
@@ -207,7 +242,7 @@ public class Gestion extends javax.swing.JFrame {
                         .addComponent(bAceptar)
                         .addGap(60, 60, 60)
                         .addComponent(bCancelar)))
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -245,10 +280,10 @@ public class Gestion extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbContratos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cbDepartamentos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -270,6 +305,7 @@ public class Gestion extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         // TODO add your handling code here:
+       tfNEmpleado.setText(generarNumEmpleado());
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed
@@ -329,8 +365,8 @@ public class Gestion extends javax.swing.JFrame {
     private javax.swing.JLabel DNI;
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bCancelar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> cbContratos;
+    private javax.swing.JComboBox<String> cbDepartamentos;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;

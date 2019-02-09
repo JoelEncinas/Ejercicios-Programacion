@@ -37,6 +37,7 @@ public class Main extends javax.swing.JFrame {
         bDepartamento = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        bCerrarSesion = new javax.swing.JButton();
         bSalir = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         mPersonas = new javax.swing.JMenu();
@@ -90,6 +91,13 @@ public class Main extends javax.swing.JFrame {
         jLabel3.setText("BIENVENIDO");
 
         jLabel4.setText("<html>Bienvenido a MameCorp Inc. Utiliza los botones para modificar los<br> datos de los empleados o listar los empleados por el criterio de <br> busqueda especificado.</html>");
+
+        bCerrarSesion.setText("Cerrar Sesion");
+        bCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bCerrarSesionActionPerformed(evt);
+            }
+        });
 
         bSalir.setText("Salir");
         bSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -152,10 +160,6 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(323, 516, Short.MAX_VALUE)
-                .addComponent(bSalir)
-                .addGap(25, 25, 25))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -185,7 +189,13 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(80, 80, 80)
                                 .addComponent(jLabel3)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(122, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(bCerrarSesion)
+                .addGap(18, 18, 18)
+                .addComponent(bSalir)
+                .addGap(11, 11, 11))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -212,9 +222,11 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(bContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bDepartamento, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
-                .addComponent(bSalir)
-                .addGap(25, 25, 25))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bCerrarSesion)
+                    .addComponent(bSalir))
+                .addContainerGap())
         );
 
         pack();
@@ -252,6 +264,12 @@ public class Main extends javax.swing.JFrame {
         T8p4e1.cerrarMain();
         T8p4e1.mostrarGestion();
     }//GEN-LAST:event_bModificacionActionPerformed
+
+    private void bCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarSesionActionPerformed
+        // TODO add your handling code here:
+        T8p4e1.cerrarMain();
+        T8p4e1.mostrarLogin();
+    }//GEN-LAST:event_bCerrarSesionActionPerformed
 
     private void bSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bSalirActionPerformed
         // TODO add your handling code here:
@@ -296,6 +314,7 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAlta;
     private javax.swing.JButton bBaja;
+    private javax.swing.JButton bCerrarSesion;
     private javax.swing.JButton bContrato;
     private javax.swing.JButton bDepartamento;
     private javax.swing.JMenu bListado;

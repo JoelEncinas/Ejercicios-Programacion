@@ -15,11 +15,11 @@ public class Departamento {
         this.nomDepartamento = nomDepartamento;
     }
 
-    public  String getNombreDepartamento() {
+    public String getNombreDepartamento() {
         return nomDepartamento;
     }
 
-    public  void setNombreDepartamento(String nomDepartamento) {
+    public void setNombreDepartamento(String nomDepartamento) {
         this.nomDepartamento = nomDepartamento;
     }
 

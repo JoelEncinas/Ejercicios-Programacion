@@ -3,8 +3,10 @@ package t8p4e1;
 
 import Clases.*;
 import Vistas.*;
+import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -21,8 +23,11 @@ public class T8p4e1 {
     //Clases
     private static Personal ep1;
     private static Empleado ee1;
+    private static ArrayList<Empleado> listaEmpleados;
     private static Departamento departamento;
     private static ArrayList<Departamento> listaDepartamentos;
+    private static Contrato c1;
+    private static ArrayList<Contrato> listaContratos;
 
     //Variables
     private static int contador = 0;
@@ -36,6 +41,8 @@ public class T8p4e1 {
         //Inicializar base de datos
         crearDatosPersonal();
         crearDatosDepartamento();
+        crearDatosContrato();
+        listaEmpleados = new ArrayList<>();
         
         //Intro login
         mostrarLogin();
@@ -88,6 +95,17 @@ public class T8p4e1 {
         vGestion.dispose();
     }
     
+    public static void darAltaEmpleado(String DNI, String NSS, String nombre, 
+                                       String direccion, String telefono,
+                                       String sexo, String estadoCivil, 
+                                       String contrato, String departamento,
+                                       LocalDate fechaAlta, int nEmpleado){
+        ee1 = new Empleado(DNI, NSS, nombre, direccion, telefono, sexo,
+                           estadoCivil, contrato, departamento, fechaAlta,
+                           nEmpleado);
+        listaEmpleados.add(ee1);
+    }
+    
     //Metodos Personal
     public static void crearDatosPersonal() {
         ep1 = new Personal("a", "a");
@@ -105,19 +123,44 @@ public class T8p4e1 {
         departamento = new Departamento("Contabilidad");
         listaDepartamentos.add(departamento);
         
-        //Debug purposes
-        for (int i = 0; i < listaDepartamentos.size(); i++) {
-            System.out.println(listaDepartamentos.get(i).getNombreDepartamento());
-        }
-        
+//        //Debug purposes
+//        for (int i = 0; i < listaDepartamentos.size(); i++) {
+//            System.out.println(listaDepartamentos.get(i).getNombreDepartamento());
+//        }   
     }
     
-    //Metodos Contrato
+    public static ArrayList getListaDepartamentos(){
+        return listaDepartamentos;
+    }
     
+    
+    //Metodos Contrato
+    public static void crearDatosContrato(){
+        listaContratos = new ArrayList<>();
+        c1 = new Contrato("Indefinido");
+        listaContratos.add(c1);
+        c1 = new Contrato("Temporal");
+        listaContratos.add(c1);
+        c1 = new Contrato("Relevo");
+        listaContratos.add(c1);
+        c1 = new Contrato("Practicas");
+        listaContratos.add(c1);
+        c1 = new Contrato("Parcial");
+        listaContratos.add(c1);
+             
+//        //Debug purposes
+//        for (int i = 0; i < listaContratos.size(); i++) {
+//            System.out.println(listaContratos.get(i).getTipo());
+//        } 
+    }
+    
+    public static ArrayList getListaContratos(){
+        return listaContratos;
+    }
     
     //Metodos Empleado
     public static void crearDatosEmpleado(){
-        
+        //
     }
     
     //Salir programa
