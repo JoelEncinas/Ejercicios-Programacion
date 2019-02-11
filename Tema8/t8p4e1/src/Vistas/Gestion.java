@@ -5,7 +5,10 @@ import Clases.Departamento;
 import Clases.Contrato;
 import java.util.ArrayList;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 import t8p4e1.T8p4e1;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -16,6 +19,9 @@ public class Gestion extends javax.swing.JFrame {
     private int nEmpleado;
     private ArrayList<Departamento> listaDepartamentos;
     private ArrayList<Contrato> listaContratos;
+    private String sexoSelected;
+    private String estadoCivilSelected;
+    
     
     /**
      * Creates new form Gestion
@@ -32,7 +38,7 @@ public class Gestion extends javax.swing.JFrame {
         bgEstadoCivil.add(rbHombre);
         bgEstadoCivil.add(rbMujer);
         bgSexo.add(rbSoltero);
-        bgSexo.add(rbCasado);
+        bgSexo.add(rbCasado);     
         
         //Añadir departamentos y contratos
         llenarComboboxDepartamentos(listaDepartamentos);
@@ -69,6 +75,39 @@ public class Gestion extends javax.swing.JFrame {
         for (int i = 0; i < listaDepartamentos.size(); i++) {
             cbDepartamentos.addItem(listaDepartamentos.get(i).getNombreDepartamento());
         }
+    }
+    
+    public void generarFecha(){
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	LocalDate localDate = LocalDate.now();
+	System.out.println(dateFormatter.format(localDate)); 
+    }
+    
+    public LocalDate dateParser(String fecha){
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate fechaFormateada = LocalDate.parse(fecha, dateFormatter);
+        return fechaFormateada;
+    }
+    
+    public void rbSeleccionadoEC(){
+        if (rbCasado.isSelected()) {
+            estadoCivilSelected = rbCasado.getText();
+        }
+        
+        if (rbSoltero.isSelected()) {
+            estadoCivilSelected = rbSoltero.getText();
+        }
+    }
+    
+    public void rbSeleccionadoSX(){
+        if (rbHombre.isSelected()) {
+            sexoSelected = rbHombre.getText();
+        }
+        
+        if (rbMujer.isSelected()) {
+            sexoSelected = rbMujer.getText();
+        }
+
     }
 
     /**
@@ -305,7 +344,17 @@ public class Gestion extends javax.swing.JFrame {
 
     private void bAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAceptarActionPerformed
         // TODO add your handling code here:
-       tfNEmpleado.setText(generarNumEmpleado());
+        tfNEmpleado.setText(generarNumEmpleado());
+        rbSeleccionadoEC();
+        rbSeleccionadoSX();
+        LocalDate fechaFormateada = dateParser(tfFecha.getText());
+        T8p4e1.darAltaEmpleado(tfDNI.getText(), tfNSS.getText(), tfNombre.getText(),
+                               tfDireccion.getText(), tfTelefono.getText(),
+                               sexoSelected, estadoCivilSelected, cbContratos.getItemAt(cbContratos.getSelectedIndex()),
+                               cbDepartamentos.getItemAt(cbDepartamentos.getSelectedIndex()), fechaFormateada, nEmpleado);
+        JOptionPane.showMessageDialog(this, "Empleado dado de alta con el nº " + nEmpleado);
+        T8p4e1.cerrarGestion();
+        T8p4e1.mostrarMain();       
     }//GEN-LAST:event_bAceptarActionPerformed
 
     private void bCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCancelarActionPerformed

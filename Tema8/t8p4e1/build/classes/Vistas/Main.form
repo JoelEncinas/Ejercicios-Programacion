@@ -226,16 +226,25 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="N&#xba; Empleado"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bNumEmpleadoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bContrato">
       <Properties>
         <Property name="text" type="java.lang.String" value="Listar por Contrato"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bContratoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bDepartamento">
       <Properties>
         <Property name="text" type="java.lang.String" value="Listar por Departamento"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bDepartamentoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>

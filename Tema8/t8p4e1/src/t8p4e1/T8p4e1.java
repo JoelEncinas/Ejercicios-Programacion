@@ -1,4 +1,4 @@
-/* [Xx ¡Bienvenidos al tren del mame! xX] */
+ /* [Xx ¡Bienvenidos al tren del mame! xX] */
 package t8p4e1;
 
 import Clases.*;
@@ -6,7 +6,6 @@ import Vistas.*;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -22,7 +21,7 @@ public class T8p4e1 {
     
     //Clases
     private static Personal ep1;
-    private static Empleado ee1;
+    private static Empleado ee1, ee2;
     private static ArrayList<Empleado> listaEmpleados;
     private static Departamento departamento;
     private static ArrayList<Departamento> listaDepartamentos;
@@ -42,7 +41,7 @@ public class T8p4e1 {
         crearDatosPersonal();
         crearDatosDepartamento();
         crearDatosContrato();
-        listaEmpleados = new ArrayList<>();
+        crearDatosEmpleado();
         
         //Intro login
         mostrarLogin();
@@ -91,6 +90,12 @@ public class T8p4e1 {
         vGestion.setVisible(true);
     }
     
+    public static void mostrarGestionModificacion(){
+        vGestion = new Gestion();
+        vGestion.setVisible(true);
+        
+    }
+    
     public static void cerrarGestion(){
         vGestion.dispose();
     }
@@ -104,16 +109,19 @@ public class T8p4e1 {
                            estadoCivil, contrato, departamento, fechaAlta,
                            nEmpleado);
         listaEmpleados.add(ee1);
+        
+        //Debug purposes
+        System.out.println(ee1.toString());
     }
     
     //Metodos Personal
     public static void crearDatosPersonal() {
-        ep1 = new Personal("a", "a");
+        ep1 = new Personal("", "");
     }
     
     //Metodos Departamento
     public static void crearDatosDepartamento(){
-        listaDepartamentos = new ArrayList<>();
+        listaDepartamentos = new ArrayList();
         departamento = new Departamento("Logistica");        
         listaDepartamentos.add(departamento);
         departamento = new Departamento("Personal");
@@ -136,7 +144,7 @@ public class T8p4e1 {
     
     //Metodos Contrato
     public static void crearDatosContrato(){
-        listaContratos = new ArrayList<>();
+        listaContratos = new ArrayList();
         c1 = new Contrato("Indefinido");
         listaContratos.add(c1);
         c1 = new Contrato("Temporal");
@@ -160,7 +168,24 @@ public class T8p4e1 {
     
     //Metodos Empleado
     public static void crearDatosEmpleado(){
-        //
+        LocalDate dateNow = LocalDate.now();
+        listaEmpleados = new ArrayList();
+        ee2 = new Empleado("7283920", "9283", "jowi", "/C Mame", "667182839", "h",
+                           "s", "Indefinido", "Contabilidad", dateNow,
+                           23);
+        listaEmpleados.add(ee2);
+        ee2 = new Empleado("7283920", "9283", "juan", "/C Mame", "667182839", "h",
+                           "s", "Parcial", "Informatica", dateNow,
+                           10);
+        listaEmpleados.add(ee2);
+        ee2 = new Empleado("7283920", "9283", "pepe", "/C Mame", "667182839", "h",
+                           "s", "Temporal", "Logistica", dateNow,
+                           82);
+        listaEmpleados.add(ee2);
+    }
+    
+    public static ArrayList getListaEmpleados(){
+        return listaEmpleados;
     }
     
     //Salir programa

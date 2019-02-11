@@ -125,4 +125,13 @@ public class Empleado {
         this.numEmpleado = numEmpleado;
     }
 
+    @Override
+    public String toString() {
+        return "Empleado{ \n" + "DNI: " + DNI + "\n NSS: " + NSS + "\n nombre: " + nombre + 
+                "\n direccion: " + direccion + "\n telefono: " + telefono + "\n sexo: " +
+                sexo + "\n estadoCivil: " + estadoCivil + "\n contrato: " + contrato + 
+                "\n departamento: " + departamento + "\n fechaAlta: " + fechaAlta +
+                "\n numEmpleado: " + numEmpleado + '}';
+    }
+
 }

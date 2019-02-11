@@ -38,7 +38,6 @@ public class Login extends javax.swing.JFrame {
         jPass = new javax.swing.JLabel();
         tfUser = new javax.swing.JTextField();
         tfPass = new javax.swing.JPasswordField();
-        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,8 +68,6 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("-User: a  -Pass: a");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,9 +96,7 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(bAceptar)))
                         .addGap(0, 27, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(bSalir)))
                 .addContainerGap())
         );
@@ -121,9 +116,7 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(bAceptar)
                 .addGap(19, 19, 19)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bSalir)
-                    .addComponent(jLabel2))
+                .addComponent(bSalir)
                 .addContainerGap())
         );
 
@@ -183,7 +176,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton bAceptar;
     private javax.swing.JButton bSalir;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jPass;
     private javax.swing.JLabel jUser;
     private javax.swing.JPasswordField tfPass;

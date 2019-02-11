@@ -1,6 +1,9 @@
 /* [Xx ¡Bienvenidos al tren del mame! xX] */
 package Vistas;
 
+import Clases.Empleado;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import t8p4e1.T8p4e1;
 
 /**
@@ -9,14 +12,79 @@ import t8p4e1.T8p4e1;
  */
 public class Main extends javax.swing.JFrame {
 
+    private boolean flag;
+    //altaBaja = true > modificacion
+    //altaBaja = false > baja
+    private boolean modificacionBaja;
+    private ArrayList<Empleado> listaEmpleados;
+    private int nEmpleadoMB;
+    
     /**
      * Creates new form Main
      */
     public Main() {
         initComponents();
         setLocationRelativeTo(null);
+        
+        //modificacion/baja flag
+        modificacionBaja = false;
+        
+        //Llenar lista empleados
+        llenarListaEmpleados(listaEmpleados);
+        
+        //Debug purposes
+        System.out.println(listaEmpleados);
     }
-
+    
+    public boolean comprobarEmpleado(ArrayList<Empleado> listaEmpleados){
+        int nEmpleado = Integer.parseInt(JOptionPane.showInputDialog(this, "Introduce el nº de empleado"));
+        flag = false;
+        
+        for (int i = 0; i < listaEmpleados.size(); i++) {
+            if (nEmpleado == listaEmpleados.get(i).getNumEmpleado()) {
+                flag = true;
+                nEmpleadoMB = nEmpleado;
+            }
+        }
+        
+        return flag;
+    }
+    
+    public final void llenarListaEmpleados(ArrayList<Empleado> listaEmpleados){
+        this.listaEmpleados = T8p4e1.getListaEmpleados();
+    }
+    
+    public void accederModificacionBaja(boolean modificacionBaja){
+        if (!comprobarEmpleado(listaEmpleados)) {
+            JOptionPane.showMessageDialog(rootPane, "El empleado no existe");
+        }
+        
+        //Si el empleado existe se procede a modificar/dar de baja
+        else {
+            
+            if (modificacionBaja) {
+                T8p4e1.cerrarMain();
+                T8p4e1.mostrarGestionModificacion();
+            }
+            
+            else {
+                String respuesta = JOptionPane.showInputDialog(rootPane, "Estas seguro que quieres eliminar al empleado?[Y/N]");
+                
+                if (respuesta.equalsIgnoreCase("y")) {
+                    for (int i = 0; i < listaEmpleados.size(); i++) {
+                        if (nEmpleadoMB == listaEmpleados.get(i).getNumEmpleado()) {
+                            listaEmpleados.remove(i);
+                            
+                            //Debug purposes
+                            System.out.println(listaEmpleados);
+                        }
+                    }
+                }
+            }
+            
+        } 
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -82,10 +150,25 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setText("Listado");
 
         bNumEmpleado.setText("Nº Empleado");
+        bNumEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bNumEmpleadoActionPerformed(evt);
+            }
+        });
 
         bContrato.setText("Listar por Contrato");
+        bContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bContratoActionPerformed(evt);
+            }
+        });
 
         bDepartamento.setText("Listar por Departamento");
+        bDepartamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bDepartamentoActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setText("BIENVENIDO");
@@ -255,14 +338,13 @@ public class Main extends javax.swing.JFrame {
 
     private void bBajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBajaActionPerformed
         // TODO add your handling code here:
-        T8p4e1.cerrarMain();
-        T8p4e1.mostrarGestion();
+        accederModificacionBaja(modificacionBaja);
     }//GEN-LAST:event_bBajaActionPerformed
 
     private void bModificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificacionActionPerformed
         // TODO add your handling code here:
-        T8p4e1.cerrarMain();
-        T8p4e1.mostrarGestion();
+        modificacionBaja = true;      
+        accederModificacionBaja(modificacionBaja);
     }//GEN-LAST:event_bModificacionActionPerformed
 
     private void bCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bCerrarSesionActionPerformed
@@ -275,6 +357,18 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         T8p4e1.cerrarPrograma();
     }//GEN-LAST:event_bSalirActionPerformed
+
+    private void bNumEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bNumEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bNumEmpleadoActionPerformed
+
+    private void bContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bContratoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bContratoActionPerformed
+
+    private void bDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bDepartamentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bDepartamentoActionPerformed
 
     /**
      * @param args the command line arguments
